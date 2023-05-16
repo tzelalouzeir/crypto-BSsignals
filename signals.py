@@ -16,9 +16,7 @@ def datapre(exchange,symbol,intervals,bars):
     period_wt = 10
     period_cci = 20
     period_adx = 14
-
-
-
+    
     # Calculate Fibonacci levels
     high = df['high'].max()
     low = df['low'].min()
@@ -27,18 +25,16 @@ def datapre(exchange,symbol,intervals,bars):
         fib_level = high - (high - low) * level
         df[f'fib_{level}'] = np.round(fib_level, 2)
 
-
     # Calculate Indicators
     slowk, slowd = talib.STOCH(df['high'], df['low'], df['close'], fastk_period=14, slowk_period=3, slowk_matype=0, slowd_period=3, slowd_matype=0)
-    df['obv'] = talib.OBV(df['close'], df['volume'])
-    df['cmf'] = ta.volume.chaikin_money_flow(df['high'], df['low'], df['close'], df['volume'])
     upperband, middleband, lowerband = talib.BBANDS(df['close'], timeperiod=20, nbdevup=2, nbdevdn=2, matype=0)
     tenkan_sen = (df['high'].rolling(window=9).max() + df['low'].rolling(window=9).min()) / 2
     kijun_sen = (df['high'].rolling(window=26).max() + df['low'].rolling(window=26).min()) / 2
     senkou_span_a = ((tenkan_sen + kijun_sen) / 2).shift(26)
     senkou_span_b = ((df['high'].rolling(window=52).max() + df['low'].rolling(window=52).min()) / 2).shift(26)
-
     bb = BollingerBands(close=df['close'], window=20, window_dev=2)
+    df['obv'] = talib.OBV(df['close'], df['volume'])
+    df['cmf'] = ta.volume.chaikin_money_flow(df['high'], df['low'], df['close'], df['volume'])
     df['bb_upper'] = bb.bollinger_hband()
     df['bb_middle'] = bb.bollinger_mavg()
     df['bb_lower'] = bb.bollinger_lband()
@@ -58,7 +54,6 @@ def datapre(exchange,symbol,intervals,bars):
     df['signal_cmf'] = np.where(df['cmf'] > 0, 1, np.where(df['cmf'] < 0, -1, 0))
     df['signal_mae'] = np.where(df['close'] > upperband, -1, np.where(df['close'] < lowerband, 1, 0))
     df['signal_ichimoku'] = np.where((df['close'] > senkou_span_a) & (df['close'] > senkou_span_b), 1, np.where((df['close'] < senkou_span_a) & (df['close'] < senkou_span_b), -1, 0))
-
     df['signal_fib'] = np.where(df['close'] < df['fib_0.236'], -1, np.where(df['close'] > df['fib_0.618'], 1, 0))
     df['signal_bb'] = np.where(df['close'] < df['bb_lower'], -1, np.where(df['close'] > df['bb_upper'], 1, 0))
     df['signal_macd'] = np.where(df['macd'] < df['macd_signal'], -1, np.where(df['macd'] > df['macd_signal'], 1, 0))
