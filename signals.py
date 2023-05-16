@@ -3,7 +3,6 @@ def datapre(exchange,symbol,intervals,bars):
     import ta
     from ta.trend import SMAIndicator , EMAIndicator
     from ta.volatility import KeltnerChannel, BollingerBands
-    import ccxt
     
     historical_data = exchange.fetch_ohlcv(symbol, timeframe=intervals, limit=bars)
     df = pd.DataFrame(historical_data, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
