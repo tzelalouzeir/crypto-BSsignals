@@ -28,7 +28,7 @@ def datapre(exchange,symbol,intervals,bars):
         df[f'fib_{level}'] = np.round(fib_level, 2)
 
 
-    # INDICATORS
+    # Calculate Indicators
     slowk, slowd = talib.STOCH(df['high'], df['low'], df['close'], fastk_period=14, slowk_period=3, slowk_matype=0, slowd_period=3, slowd_matype=0)
     df['obv'] = talib.OBV(df['close'], df['volume'])
     df['cmf'] = ta.volume.chaikin_money_flow(df['high'], df['low'], df['close'], df['volume'])
