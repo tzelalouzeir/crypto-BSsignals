@@ -34,17 +34,11 @@ The script calculates the following trading indicators and signals:
 - numpy
 - talib
 - ta
-- sklearn
 - ccxt
 
 ## Installation
 
-1. Clone the repository:
-    ```
-    git clone https://github.com/tzelalouzeir/crypto-signals.git
-    ```
-
-2. Install the dependencies:
+1. Install the dependencies:
     ```
     pip install pandas numpy TA-Lib ta ccxt
     ```
