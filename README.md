@@ -75,5 +75,5 @@ df = datapre(exchange, symbol, intervals, bars)
 ## Disclaimer
 This script is for informational purposes only and should not be considered as investment advice. Always do your own research before making any investment decisions.
 Further information you can check:
-https://github.com/TA-Lib/ta-lib-python
-https://github.com/bukosabino/ta
+- https://github.com/TA-Lib/ta-lib-python
+- https://github.com/bukosabino/ta
