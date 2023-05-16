@@ -46,7 +46,7 @@ The script calculates the following trading indicators and signals:
 
 2. Install the dependencies:
     ```
-    pip install pandas numpy TA-Lib ta sklearn ccxt
+    pip install pandas numpy TA-Lib ta ccxt
     ```
 
 
