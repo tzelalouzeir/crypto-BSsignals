@@ -1,28 +1,6 @@
 # Cryptocurrency Buy/Sell Signals
 
 This project generates buy and sell signals for cryptocurrencies using various financial indicators. The script is designed to work with the Binance exchange but can be adapted to work with other exchanges.
-
-## Prerequisites
-
-- Python 3.8
-- pandas
-- numpy
-- talib
-- ta
-- sklearn
-- ccxt
-
-## Installation
-
-1. Clone the repository:
-    ```
-    git clone https://github.com/tzelalouzeir/crypto-signals.git
-    ```
-
-2. Install the dependencies:
-    ```
-    pip install pandas numpy TA-Lib ta sklearn ccxt
-    ```
 ## Script Description
 
 The script defines a function `datapre()`, which fetches historical price and volume data for a specified cryptocurrency pair from the Binance exchange, calculates various trading indicators, and generates trading signals based on these indicators.
@@ -48,6 +26,28 @@ The script calculates the following trading indicators and signals:
 - Commodity Channel Index (CCI)
 - Average Directional Movement Index (ADX)
 - Keltner Channel (KC)
+
+## Prerequisites
+
+- Python 3.8
+- pandas
+- numpy
+- talib
+- ta
+- sklearn
+- ccxt
+
+## Installation
+
+1. Clone the repository:
+    ```
+    git clone https://github.com/tzelalouzeir/crypto-signals.git
+    ```
+
+2. Install the dependencies:
+    ```
+    pip install pandas numpy TA-Lib ta sklearn ccxt
+    ```
 
 
 ## Usage
